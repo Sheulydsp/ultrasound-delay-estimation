@@ -1,126 +1,177 @@
-##Ultrasound Delay Estimation using Cross-Correlation
-Overview
+# Ultrasound Delay Estimation using Cross-Correlation
 
-This project demonstrates delay estimation in multi-channel ultrasound signals using cross-correlation methods. The objective is to estimate relative time delays between signals under noisy conditions, which is essential for phase aberration correction and beamforming in ultrasound imaging systems.
+## Overview
+This project demonstrates delay estimation in multi-channel ultrasound signals using cross-correlation methods. The goal is to estimate relative time delays between signals under noisy conditions, which is essential for phase aberration correction and beamforming in ultrasound imaging systems.
 
-The implementation is a simplified and structured version of a larger Master’s thesis project focused on analyzing the robustness of delay estimation methods under noise.
+This implementation is a simplified and structured version of my Master's thesis work, where I analyzed the robustness of delay estimation methods under noise.
 
-Motivation
+---
 
+## Motivation
 In ultrasound imaging, signals received by different transducer elements arrive at slightly different times due to variations in propagation paths and tissue properties. Accurate estimation of these delays is critical for:
 
-Coherent signal alignment
-
-Beamforming
-
-Image quality improvement
+- Coherent signal alignment  
+- Beamforming  
+- Image quality improvement  
 
 Noise and sampling limitations affect delay estimation accuracy. This project explores how delay estimation performs under such conditions.
 
-Methodology
+---
+
+## Methodology
 
 The simulation follows a complete signal processing pipeline:
 
-1. Signal Generation
+### Signal Generation
+A reference signal is generated as a windowed sinusoidal pulse representing an ultrasound RF signal.
 
-A reference signal is created as a windowed sinusoidal pulse representing an ultrasound RF signal.
+### Delay Modeling
+Multiple delayed versions of the reference signal are created to simulate multi-channel acquisition.
 
-2. Delay Modeling
+### Noise Modeling
+Additive White Gaussian Noise (AWGN) is applied to simulate measurement noise.
 
-Multiple delayed versions of the reference signal are generated to simulate multi-channel acquisition.
+### Signal Conditioning
+- Bandpass filtering using an elliptic filter  
+- Windowing using a Tukey window to reduce edge effects  
 
-3. Noise Modeling
+### Delay Estimation
+- Cross-correlation is used to estimate relative delays  
+- Parabolic interpolation is applied for sub-sample accuracy  
 
-Additive White Gaussian Noise is applied to simulate measurement noise.
+### Performance Evaluation
+Monte Carlo simulations are performed across multiple trials.  
+Error is computed as the difference between estimated and true delays.  
 
-4. Signal Conditioning
+Metrics used:
+- Mean error (bias)  
+- Standard deviation (variability)  
 
-Bandpass filtering using an elliptic filter
+---
 
-Windowing using a Tukey window to reduce edge effects
+## Project Structure
+# Ultrasound Delay Estimation using Cross-Correlation
 
-5. Delay Estimation
+## Overview
+This project demonstrates delay estimation in multi-channel ultrasound signals using cross-correlation methods. The goal is to estimate relative time delays between signals under noisy conditions, which is essential for phase aberration correction and beamforming in ultrasound imaging systems.
 
-Cross-correlation is used to estimate relative delays.
-Parabolic interpolation is applied to achieve sub-sample accuracy.
+This implementation is a simplified and structured version of my Master's thesis work, where I analyzed the robustness of delay estimation methods under noise.
 
-6. Performance Evaluation
+---
 
-Monte Carlo simulations are performed across multiple trials.
-Error is computed as the difference between estimated and true delays.
-Statistical metrics include:
+## Motivation
+In ultrasound imaging, signals received by different transducer elements arrive at slightly different times due to variations in propagation paths and tissue properties. Accurate estimation of these delays is critical for:
 
-Mean error (bias)
+- Coherent signal alignment  
+- Beamforming  
+- Image quality improvement  
 
-Standard deviation (variability)
+Noise and sampling limitations affect delay estimation accuracy. This project explores how delay estimation performs under such conditions.
 
-Project Structure
+---
+
+## Methodology
+
+The simulation follows a complete signal processing pipeline:
+
+### Signal Generation
+A reference signal is generated as a windowed sinusoidal pulse representing an ultrasound RF signal.
+
+### Delay Modeling
+Multiple delayed versions of the reference signal are created to simulate multi-channel acquisition.
+
+### Noise Modeling
+Additive White Gaussian Noise (AWGN) is applied to simulate measurement noise.
+
+### Signal Conditioning
+- Bandpass filtering using an elliptic filter  
+- Windowing using a Tukey window to reduce edge effects  
+
+### Delay Estimation
+- Cross-correlation is used to estimate relative delays  
+- Parabolic interpolation is applied for sub-sample accuracy  
+
+### Performance Evaluation
+Monte Carlo simulations are performed across multiple trials.  
+Error is computed as the difference between estimated and true delays.  
+
+Metrics used:
+- Mean error (bias)  
+- Standard deviation (variability)  
+
+---
+
+## Project Structure
 .
 ├── main.py
 ├── requirements.txt
 └── README.md
-How to Run
-1. Install dependencies
+
+---
+
+## How to Run
+
+### Install dependencies
+
 pip install -r requirements.txt
-2. Run simulation
+
+
+### Run simulation
+
 python main.py
 
+
 The script will output:
+- Mean delay estimation error  
+- Standard deviation of the error  
 
-Mean delay estimation error
+---
 
-Standard deviation of the error
+## Key Concepts Demonstrated
 
-Key Concepts Demonstrated
+- Cross-correlation-based delay estimation  
+- Sub-sample estimation using interpolation  
+- Multi-channel signal simulation  
+- Noise robustness analysis  
+- Monte Carlo evaluation of system performance  
 
-Cross-correlation-based delay estimation
+---
 
-Sub-sample estimation using interpolation
+## Relation to Thesis Work
 
-Multi-channel signal simulation
+This project is based on my Master's thesis:
 
-Noise robustness analysis
+**Analysis of Noise Effects on Delay Estimation for Ultrasound Phase Aberration Correction**
 
-Monte Carlo evaluation of system performance
+The full thesis includes:
+- Multi-channel simulation (up to 64 channels)  
+- Advanced delay estimation methods (NNCC and beamsum)  
+- Detailed analysis of noise impact on bias and variance  
+- Extensive statistical evaluation  
 
-Relation to Thesis Work
+This repository provides a simplified version focusing on the core concepts and implementation.
 
-This repository represents a simplified implementation of a Master’s thesis focused on:
+---
 
-Delay estimation methods (NNCC and beamsum correlation)
+## Skills Demonstrated
 
-Multi-channel ultrasound signal modeling
+- Signal processing for ultrasound systems  
+- Algorithm development and validation  
+- Statistical performance analysis  
+- Simulation of real-world conditions  
+- Clean and structured code design  
 
-Analysis of noise effects on estimation accuracy
+---
 
-Evaluation using statistical metrics such as bias, variance, and correlation
+## Future Improvements
+   
+- Use real ultrasound datasets  
+- Evaluate impact on reconstructed image quality  
 
-The full thesis includes more advanced simulations, realistic parameter settings, and extensive evaluation across multiple configurations.
+---
 
-Skills Demonstrated
+## Author
 
-Signal processing for ultrasound systems
-
-Algorithm implementation and evaluation
-
-Statistical analysis of system performance
-
-Simulation of real-world conditions
-
-Clean and structured code design
-
-Future Improvements
-
-Implement fractional delay modeling
-
-Extend to beamsum-based delay estimation
-
-Incorporate real ultrasound datasets
-
-Evaluate impact on reconstructed image quality
-
-Author
-
-Sheuly Debnath
-Master’s in Signal Processing and Imaging
-University of Oslo
+Sheuly Debnath  
+Master’s in Signal Processing and Imaging  
+University of Oslo  

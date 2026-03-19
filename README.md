@@ -1,4 +1,4 @@
-Ultrasound Delay Estimation using Cross-Correlation
+##Ultrasound Delay Estimation using Cross-Correlation
 Overview
 
 This project demonstrates delay estimation in multi-channel ultrasound signals using cross-correlation methods. The objective is to estimate relative time delays between signals under noisy conditions, which is essential for phase aberration correction and beamforming in ultrasound imaging systems.
